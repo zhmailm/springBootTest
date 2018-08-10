@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wfj.mapper.StudentMapper">
+	<select id="getSyj" parameterType="String" resultType="com.wfj.bean.Syj">
+		select
+		s.CODE, s.BZ, s.SGROUP, s.PTPRN, s.ZZPRN, s.CX, s.PF, s.TH, s.SZ,
+		s.YJHX, s.ZPXYK, s.DYFSH, s.YYYH, s.SFFD, s.DYZDXE,s.SSWR, s.SFTS,
+		s.JKSJJG, s.XZSJJG,s.STATUS, s.SJ, s.SYHH, s.BS, s.XSJE, s.XJJE,
+		s.DQZDXPH,
+		s.BZCOM, s.BZPER,BZDJ, s.BZGZYH,s.BZCOMYH,s.BZTZ, s.BZHL, s.BZHYK,
+		s.BZKGS, s.BZGLJG, s.BZDZXL, s.QZZT,s.USERID,PASSWD,s.CMD, s.CFKSRQ,
+		s.CFJSRQ, s.HTSTATUS, s.SEQNO, s.SYJIP, s.ISPRN, s.ISDISP,s.DYJIP
+		from SYJ s
+		where s.CODE=#{CODE}
+	</select>
+	<select id="selectstu" resultType="com.wfj.bean.Student">
+		SELECT * FROM student
+	</select>
+	<select id="selectStuOne" resultType="com.wfj.bean.Student">
+		SELECT * FROM student WHERE
+		sid = #{sid}
+	</select>
+
+	<delete id="deletestu" parameterType="Integer">
+		DELETE FROM student WHERE
+		sid = #{sid}
+	</delete>
+
+	<insert id="savestu" parameterType="com.wfj.bean.Student">
+		INSERT INTO student
+		( sid,
+		sname,
+		sbrith,
+		sadress,
+		ssex,
+		slikes
+		)
+		VALUES
+		( #{sid},
+		#{sname},
+		#{sbrith},
+		#{sadress},
+		#{ssex},
+		#{slikes}
+		)
+	</insert>
+
+	<update id="updatestu" parameterType="com.wfj.bean.Student">
+		UPDATE student SET
+		sname =
+		#{sname},
+		sbrith = #{sbrith},
+		sadress = #{sadress},
+		ssex = #{ssex},
+		slikes = #{slikes}
+		WHERE
+		sid = #{sid}
+	</update>
+</mapper>
